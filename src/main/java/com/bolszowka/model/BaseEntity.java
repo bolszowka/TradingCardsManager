@@ -17,7 +17,7 @@ import java.util.UUID;
 public class BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //TODO sequence ?
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //TODO zmienic na sequence
     private Long id;
 
     @CreationTimestamp

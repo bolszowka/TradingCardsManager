@@ -1,13 +1,13 @@
 package com.bolszowka.service;
 
+import static java.util.stream.Collectors.toList;
+
 import com.bolszowka.dto.CardDto;
 import com.bolszowka.dto.CardSearchCriteria;
 import com.bolszowka.mapper.CardMapper;
 import com.bolszowka.repository.CardRepository;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.stream.Collectors;
+import org.springframework.stereotype.Service;
 
 @Service
 public class CardService {
@@ -21,6 +21,8 @@ public class CardService {
     }
 
     public List<CardDto> findByProducerAndCollection(CardSearchCriteria cardSearchCriteria) {
-        return cardRepository.findByProducerAndCollection(cardSearchCriteria.getProducerName(), cardSearchCriteria.getCollectionName()).stream().map(cardMapper::toDto).collect(Collectors.toList());
+        return cardRepository.findByProducerAndCollection(cardSearchCriteria.getProducerName(), cardSearchCriteria.getCollectionName()).stream()
+            .map(cardMapper::toDto)
+            .collect(toList()); //TODO try to use query projection in repo and remove mapper
     }
 }

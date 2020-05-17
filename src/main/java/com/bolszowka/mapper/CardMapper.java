@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class CardMapper implements GenericMapper<Card, CardDto> {
 
+    //TODO use builders
+
     @Override
     public Card toEntity(CardDto cardDto) {
         Card card = new Card();
